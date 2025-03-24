@@ -1,120 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-    <style type="text/css">
-        .checked{
-            font-size: 13px;
-            color: grey;
+    <title>EduPort Navbar with Courses</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        .category-btn {
+            background-color: #e6f0fa; 
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
         }
-        .btnn{
-            font-weight: 500;
-            border: 1px solid rgb(227, 178, 178);
-            color: rgb(207, 46, 46);
-            background-color: rgb(239, 193, 193);
-            border-radius: 10px;
-            padding: 8px;
+        .navbar-nav-center {
+            flex: 1; 
+            display: flex;
+            justify-content: center; 
         }
-        .btnn:hover{
-            background-color: rgb(206, 54, 54);
-            color: white;
-            transition: 0.4s;
+        .courses-section {
+            padding: 50px 0;
         }
-        .div1{
-            float: left;
-            border: 1px solid pink;
-            border-radius: 8px;
-            
-            background-color: rgb(255, 243, 240);
-            margin-left: 60px;
-        }
-        .div1{
-            float: left;
-            border: 1px solid pink;
-            border-radius: 8px;
-            
-            background-color: rgb(255, 243, 240);
-            margin-left: 60px;
-        }
-        .div1{
-            float: left;
-            border: 1px solid pink;
-            border-radius: 8px;
-            
-            background-color: rgb(255, 243, 240);
-            margin-left: 60px;
-        }
-        .div1{
-            float: left;
-            border: 1px solid pink;
-            border-radius: 8px;
-            
-            background-color: rgb(255, 243, 240);
-            margin-left: 60px;
-        }
-        section{
-
-            margin-left: 100px;
-            margin-right: 100px;
-        }
-        .lin{
-            border: 1px solid rgb(79, 156, 161);
-            background-color: rgb(210, 251, 254);
-            border-radius: 10px;
+        .category-nav {
+            background-color: #e6f0fa;
             padding: 10px;
-            padding-left: 140px;
-            padding-right: 140px;
-            color: rgb(122, 122, 238);
-            font-weight: bold;
-        }
-        .lin span:hover{
-            border: 1px solid rgb(12, 12, 243);
             border-radius: 10px;
-            background-color: blue;
-            
+            display: inline-flex;
+            margin-bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .category-nav .nav-link {
+            color: #6c757d;
+            padding: 5px 15px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        .category-nav .nav-link.active {
+            background-color: #0d6efd;
             color: white;
+        }
+        .course-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .course-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover; 
+        }
+        .course-level {
+            background-color: #e6f0fa;
+            color: #0d6efd;
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            border-radius: 3px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            margin-left: 5px;
+        }
+        .course-favorite {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: #dc3545;
+        }
+        .course-body {
+            padding: 15px;
+            position: relative; 
+        }
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .course-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .course-rating i {
+            color: #ffc107;
+        }
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .course-details .duration {
+            color: #dc3545;
+        }
+        .course-details .lectures {
+            color: #fd7e14;
+        }
+        .stats-section {
+            padding: 30px 0;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .stat-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stat-card p {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            border-top: 1px solid #dee2e6;
+        }
+        footer h5 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        footer p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 10px;
+        }
+        footer ul li a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        footer ul li a:hover {
+            color: #0d6efd;
+        }
+        .social-icons a {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #0d6efd;
+        }
+        .app-store-buttons img {
+            width: 120px;
+            margin-right: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <img src="images/logo.png" alt="" width="140px">
 
-<body class="container-fluid mt-3">
-    <header class=" d-flex justify-content-between " >
-        <div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <span>
-                <img src="images/logo.png" alt="" width="150px">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn category-btn">
+                            <i class="bi bi-grid me-1"></i> Category
+                        </button>
+                    </li>
+                </ul>
 
-            </span>
-            <span>
-                <img src="images/catagory.png" alt="" width="120px">
-            </span>
+                <ul class="navbar-nav navbar-nav-center mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="demosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Demos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="demosDropdown">
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                        </ul>
+                    </li>
+                    <!-- Pages Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pages
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                        </ul>
+                    </li>
+                    <!-- Accounts Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Accounts
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                        </ul>
+                    </li>
+                    <!-- Megamenu Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="megamenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Megamenu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="megamenuDropdown">
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                            <li><a class="dropdown-item" href="#">abcde</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+                <div class="d-flex align-items-center">
+                    <!-- Search Bar -->
+                    <form class="d-flex me-3">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                    <img src="images/girl.png" alt="" width="50px">
+                    
+                </div>
+            </div>
         </div>
-        <div class="ms-5" >
-            <span class="ms-5" >
-                Demos <span class="bi bi-chevron-down"></span>
-            </span>
-            <span class="ms-5" >
-                Pages</span>
-            <span class="ms-5" >Account</span>
-            <span class="ms-5" >Megamenu</span>
-            <span class="ms-5" ><i class="bi bi-three-dots"></i></span>
-        </div>
-        <div>
-            <span></span>
-            <span> <img src="images/girl.png" alt=""></span>
-        </div>
-
-    </header>
-
+    </nav>
     <main class="row">
         <div class="col pt-5 ps-5">
             <h1 class="fw-bold mt-5 ps-5">Limitless learning at <br> your <img src="images/finger.png" alt="" width="200px"></h1>
@@ -150,143 +287,293 @@
 
 
     </main>
-    <!-- <div class="ms-5 d-flex ">
-        <span class="div1 ">
-            <img src="images/tv.png" alt="" width="80x" class="p-2"> 
-            
-             <h5>10K  </h5> online course
-        </span>
-        <spn class="div2">
-            <img src="images/pr.png" alt="" width="60px"  class="p-2">
-            
-             10K   online course
-        </span>
-        <div class="div3">
-            <img src="images/wmen.png" alt="" width="60px"  class="p-2">
-            
-             10K   online course
-        </div>
-        <div class="div3">
-            <img src="images/check.png" alt="" width="60px"  class="p-2">
-            
-             10K   online course
-        </div>
-    </div> -->
 
-    <section>
-        <div  align="center">
-
-            <h1 class="fw-bold">Most Popular Courses</h1>
-            <p class="" style="color:darkgrey ;">Choose from hundreds of courses from specialist organizations</p>
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <!-- Stat 1: Online Courses -->
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card d-flex" style="background-color: #fff3cd;">
+                        <i class="bi bi-display" style="color: #fd7e14; margin-left: 20px;"></i>
+                        <div style="margin-left: 30px;">
+                            <h3>10K</h3>
+                            <p>Online Courses</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stat 2: Expert Tutors -->
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card d-flex" style="background-color: #e2e3e5;">
+                        <i class="bi bi-person" style="color: #343a40; margin-left: 20px;"></i>
+                        <div style="margin-left: 30px;">
+                            <h3>200+</h3>
+                            <p>Expert Tutors</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stat 3: Online Students -->
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card d-flex" style="background-color: #e9d8fd;">
+                        <i class="bi bi-mortarboard" style="color: #6f42c1; margin-left: 20px;"></i>
+                        <div style="margin-left: 30px;">
+                            <h3>60K+</h3>
+                            <p>Online Students</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stat 4: Certified Courses -->
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card d-flex" style="background-color: #d1ecf1;">
+                        <i class="bi bi-check-circle" style="color: #17a2b8; margin-left: 20px;"></i>
+                        <div style="margin-left: 30px;">
+                            <h3>6K+</h3>
+                            <p>Certified Courses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="lin d-flex justify-content-between">
-            
-            <span class="webdes">Web Design</span>
-            <span class="webdes">Development</span>
-            <span class="webdes">Graphic Design</span>
-            <span class="webdes">Marketing</span>
-            <span class="webdes">Finance</span>
-        </div>
-        <div class="d-flex " >
-            <div class="card me-4" style="width: 14rem;">
-                <img src="images/py.png" class="card-img-top" alt="..." width="140px">
-                <div class="card-body">
-                  <h6 class="card-title"> Complete web Development ProGram In Phyton</h6>
-                  <p class="card-text">Mention Mr manners opinion if garrets enabled.</p>
-                </div>
-               <hr>
-                <div class="card-body">
-                  <span>10hr 00mm</span>
-                  <span>26 lectures</span>
-                  
-                </div>
-              </div>
-              <div class="card me-5" style="width: 14rem;">
-                <img src="images/py.png" class="card-img-top" alt="..." width="140px">
-                <div class="card-body">
-                  <h6 class="card-title"> Complete web Development ProGram In Phyton</h6>
-                  <p class="card-text">Mention Mr manners opinion if garrets enabled.</p>
-                </div>
-               <hr>
-                <div class="card-body">
-                  <span>10hr 00mm</span>
-                  <span>26 lectures</span>
-                  
-                </div>
-              </div>
-              <div class="card me-5" style="width: 14rem;">
-                <img src="images/py.png" class="card-img-top" alt="..." width="140px">
-                <div class="card-body">
-                  <h6 class="card-title"> Complete web Development ProGram In Phyton</h6>
-                  <p class="card-text">Mention Mr manners opinion if garrets enabled.</p>
-                </div>
-                <hr>
-                <div class="card-body">
-                  <span>10hr 00mm</span>
-                  <span>26 lectures</span>
-                  
-                </div>
-              </div>
-              <div class="card me-5" style="width: 14rem;">
-                <img src="images/py.png" class="card-img-top" alt="..." width="140px">
-                <div class="card-body">
-                  <h6 class="card-title"> Complete web Development ProGram In Phyton</h6>
-                  <p class="card-text">Mention Mr manners opinion if garrets enabled.</p>
-                </div>
-               <hr>
-                <div class="card-body">
-                  <span>10hr 00mm</span>
-                  <span>26 lectures</span>
-                  
-                </div>
-              </div>
-        </div>
-
     </section>
-    <footer style="text-align: center; background-color: rgb(249, 254, 255) ;" class="ms-5 d-flex  mt-5">
 
-        
-        <div>
-         <div class="help">𝐂𝐎𝐌𝐏𝐀𝐍𝐘</div>   
-         <span>About us</span>
-         <span>Contact us</span>
-         <span>News and Blogs</span>
-         <span>Library</span>
-         <span>Career</span>
+    <!-- Most Popular Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <!-- Heading and Subheading  -->
+            <div class="text-center">
+                <h2 class="mb-2">Most Popular Courses</h2>
+                <p class="text-muted mb-4">Choose from hundreds of courses from specialist organizations</p>
+            </div>
+
+            <!-- Category Navigation  -->
+            <div class="d-flex justify-content-center">
+                <div class="category-nav">
+                    <ul class="nav d-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Web Design</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Development</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Graphic Design</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Marketing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Finance</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Course Cards -->
+            <div class="row">
+                <!-- Course 1 -->
+                <div class="col-md-3 mb-4">
+                    <div class="course-card">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/08.jpg" alt="Course Image" class="course-image">
+                        <div class="course-body">
+                            <span class="course-level">All Level</span>
+                            <i class="bi bi-heart-fill course-favorite"></i>
+                            <h5 class="course-title">Sketch from A to Z: for app designer</h5>
+                            <p class="course-description">Proposal indulged no do sociable he throwing settling.</p>
+                            <div class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <span>4.0/5.0</span>
+                            </div>
+                            <div class="course-details mt-2">
+                                <span class="duration"><i class="bi bi-clock me-1"></i> 12h 00m</span>
+                                <span class="lectures"><i class="bi bi-book me-1"></i> 15 lectures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 2 -->
+                <div class="col-md-3 mb-4">
+                    <div class="course-card">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/02.jpg" alt="Course Image" class="course-image">
+                        <div class="course-body">
+                            <span class="course-level">Beginner</span>
+                            <i class="bi bi-heart-fill course-favorite"></i>
+                            <h5 class="course-title">Graphic Design <br> Masterclass</h5>
+                            <p class="course-description">Rooms oh fully taken by worse do. Points afraid but may end.</p>
+                            <div class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span>4.5/5.0</span>
+                            </div>
+                            <div class="course-details mt-2">
+                                <span class="duration"><i class="bi bi-clock me-1"></i> 10h 00m</span>
+                                <span class="lectures"><i class="bi bi-book me-1"></i> 65 lectures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 3 -->
+                <div class="col-md-3 mb-4">
+                    <div class="course-card">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/03.jpg" alt="Course Image" class="course-image">
+                        <div class="course-body">
+                            <span class="course-level">Beginner</span>
+                            <i class="bi bi-heart-fill course-favorite"></i>
+                            <h5 class="course-title">Create a Design System in Figma</h5>
+                            <p class="course-description">Rooms oh fully taken by worse do. Points afraid but may end.</p>
+                            <div class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span>4.5/5.0</span>
+                            </div>
+                            <div class="course-details mt-2">
+                                <span class="duration"><i class="bi bi-clock me-1"></i> 10h 00m</span>
+                                <span class="lectures"><i class="bi bi-book me-1"></i> 32 lectures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 4 -->
+                <div class="col-md-3 mb-4">
+                    <div class="course-card">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/07.jpg" alt="Course Image" class="course-image">
+                        <div class="course-body">
+                            <span class="course-level">Beginner</span>
+                            <i class="bi bi-heart-fill course-favorite"></i>
+                            <h5 class="course-title">Deep Learning with React-Native</h5>
+                            <p class="course-description">Far advanced settling say finished raillery. Offered chiefly farther.</p>
+                            <div class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <span>4.0/5.0</span>
+                            </div>
+                            <div class="course-details mt-2">
+                                <span class="duration"><i class="bi bi-clock me-1"></i> 10h 00m</span>
+                                <span class="lectures"><i class="bi bi-book me-1"></i> 109 lectures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 1 -->
+                <div class="col-md-3 mb-4">
+                    <div class="course-card">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/08.jpg" alt="Course Image" class="course-image">
+                        <div class="course-body">
+                            <span class="course-level">All Level</span>
+                            <i class="bi bi-heart-fill course-favorite"></i>
+                            <h5 class="course-title">Sketch from A to Z: for app designer</h5>
+                            <p class="course-description">Proposal indulged no do sociable he throwing settling.</p>
+                            <div class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <span>4.0/5.0</span>
+                            </div>
+                            <div class="course-details mt-2">
+                                <span class="duration"><i class="bi bi-clock me-1"></i> 9h 00m</span>
+                                <span class="lectures"><i class="bi bi-book me-1"></i> 110 lectures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course 2 -->
+                <div class="col-md-3 mb-4">
+                    <div class="course-card">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/02.jpg" alt="Course Image" class="course-image">
+                        <div class="course-body">
+                            <span class="course-level">Beginner</span>
+                            <i class="bi bi-heart-fill course-favorite"></i>
+                            <h5 class="course-title">Graphic Design <br> Masterclass</h5>
+                            <p class="course-description">Rooms oh fully taken by worse do. Points afraid but may end.</p>
+                            <div class="course-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span>4.5/5.0</span>
+                            </div>
+                            <div class="course-details mt-2">
+                                <span class="duration"><i class="bi bi-clock me-1"></i> 21h 00m</span>
+                                <span class="lectures"><i class="bi bi-book me-1"></i> 65 lectures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
         </div>
-     
-        <div> 
-         <div class="help">𝐂𝐎𝐌𝐌𝐔𝐍𝐈𝐓𝐘</div>
-         <span>Documentation</span>
-         <span>FAQs</span>
-         <span>Forum</span>
-         <span>Sitemap</span>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- EduPort Branding and Social Media -->
+                <div class="col-md-3 mb-4">
+                    <h3 style="font-style: italic;">EduPort</h3>
+                    <p>EduPort education theme, built specifically for the education centers which is dedicated to teaching and involve learners.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-phone"></i></a>
+                        <a href="#"><i class="bi bi-x"></i></a>
+                        <a href="#"><i class="bi bi-skype"></i></a>
+                    </div>
+                </div>
+                <!-- Company -->
+                <div class="col-md-2 mb-4">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Library</a></li>
+                    </ul>
+                </div>
+                <!-- Community -->
+                <div class="col-md-2 mb-4">
+                    <h5>Community</h5>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <!-- Teaching -->
+                <div class="col-md-2 mb-4">
+                    <h5>Teaching</h5>
+                    <ul>
+                        <li><a href="#">Become a teacher</a></li>
+                        <li><a href="#">How to guide</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div class="col-md-3 mb-4">
+                    <h5>Contact</h5>
+                    <p>Toll free: +91<br>(10:AM to 10:PM IST)</p>
+                    <p>Email:@gmail.com</p>
+                    
+                </div>
+            </div>
         </div>
-         
-        <div>
-         <div class="help">𝐓𝐄𝐀𝐂𝐇𝐈𝐍𝐆</div>
-         <span>Become a Teacher </span>
-         <span>How to Guide</span>
-         <span>Terms and Conditions</span>
-        </div>
-     
-        <div>
-         <div class="help">𝗖𝗢𝗡𝗧𝗔𝗖𝗧</div>
-         <span>+1234 568 963</span>
-         <span></span>
-         <span>email : <span style="color: black;">example@gmail.com</span></span> 
-        
-        </div>
-     
-     </footer>
-    `
-    
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-    crossorigin="anonymous"></script>
